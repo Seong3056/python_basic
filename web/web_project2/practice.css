@@ -1,0 +1,35 @@
+img{
+    padding: 0;
+}
+
+
+nav{
+    background-color: darkgreen;
+    font-size: 150%;
+    text-align: center;
+}
+nav a {
+    color: gold;
+    text-decoration: none;
+    
+}
+.calcul{
+    width: 200px;
+    height: 500px;
+    display: flex;
+    flex-flow: column;
+    border: 1 solid #000;
+    background-color: tomato;
+}
+.calcul  .display{
+    flex: 1;
+}
+.calcul  .input{
+    width: inherit;
+    flex: 4;
+    display: flex;
+}
+.calcul  .input div{
+    flex-flow: row wrap;   
+    justify-self: start;
+}
