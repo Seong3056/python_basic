@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css\style.css' %}">
+    </head>
+    <body>
+        <div id="navbar">
+            <span>pylog</span>
+            <button class="btn btn-primary" onclick="location.href='add/'">
+                    글작성
+            </button>
+        </div>
+        <div id="post-list">
+            
+            <ul class="posts">
+                {% for post in posts %}
+                <li class="post">                    
+                    <h2><a href="{{ post.id }}">{{post.title}}</a></h2>
+                    <p>{{post.content}}</p>
+                    
+                    
+                    <ul class="comments">
+                        {% for comment in post.comment_set.all %}
+                            <li class="comment">{{comment.content}}</li>
+                        {% empty %}
+                            <li class="comment-empty">아직 댓글이 없습니다.</li>
+                        {% endfor %}
+                    </ul>
+                    {% if post.thumbnail %}
+                        <img src="{{ post.thumbnail.url }}" alt="">
+                    {% else %}
+                        <img src="https://www.ascentkorea.com/wp-content/uploads/2020/05/alt-image.png" alt="없음">
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
