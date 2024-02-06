@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      height: 200px;
+      width: 100px;
+      background-color: aqua;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </section>
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+        <script type="text/javascript" >
+            const handleScroll = _.throttle(() => {
+			console.log('throttle activate!');
+			const scrollPosition = window.pageYOffset;
+			const height = document.body.offsetHeight;
+			const windowHeight = window.innerHeight;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const $section = document.querySelector('section')
+			str = ''
+				if(scrollPosition%windowHeight<=height) {
+				console.log('next Page call!');
+        console.log('height: '+height);
+        console.log('scrollposition: '+scrollPosition);
+        console.log('windowHeight: '+windowHeight);
+        console.log('scrollhgh: '+scrollHeight);
+        console.log('position + whgh: '+(scrollPosition+windowHeight)*0.8);
+        console.log('shgh: '+ (scrollHeight-windowHeight));
+        
+        str += '<div></div><div></div>'
+
+        if(height <(scrollPosition+windowHeight*2)) {
+            $section.insertAdjacentHTML('beforeend',str)
+        }
+        $container = document.querySelector('.container')  
+			}
+			
+
+		}, 500);
+    window.addEventListener('scroll', handleScroll);
+</script>                   

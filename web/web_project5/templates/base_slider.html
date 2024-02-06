@@ -1,0 +1,28 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/splide.css' %}">
+    <script src="{% static 'js/splide.js' %}"></script>
+{% endblock %}
+
+{% block base_content%}
+    {% include 'nav.html' %}
+    {% block content%}{% endblock %}
+    <script>
+        const elms = document.querySelectorAll(".splide")
+        for(let i =0; i< elms.length; i++){
+            new Splide(elms[i],{
+                type: 'fade', //롤링 끝나면 반복
+                autoplay : false, //자동시작
+                perPage : 1, //한 페이지에 노출되는 이미지
+                perMove : 1, //슬라이드 이미지 개수
+                arrows : true, //왼쪽 오른쪽 슬라이드 버튼 제거
+                drag : true, //드래그 비활성
+                interval : 3000, //3000ms(3초) 마다 슬라이드
+                pauseOnHover : false, //마우스 오버시 일시정지 비활성
+                pauseOnFocus : false, //포커스시 일시정지 비활성
+                pagenation : false //페이지네이션 점 비활성
+            }).mount();
+        }
+    </script>
+{% endblock %}
